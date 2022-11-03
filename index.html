@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Input</title>
+    <style>
+        body {
+            padding: 10px;
+        }
+        #result {
+            margin-top: 50px;
+            width: 60%;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        table > thead > tr {
+            border-bottom: 1px solid black;
+        }
+        
+        table tr > * {
+            border-right: 1px solid black;
+            padding: 5px 10px;
+        }
+        
+        table tr > *:last-of-type {
+            border-right: none;
+        }
+
+        label {
+            display: block;
+            margin-top: 5px;
+        }
+
+        input[type="submit"] {
+            margin-top: 5px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <form action="#" method="post">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title">
+        <label for="price">Price</label>
+        <input type="text" name="price" id="price">
+        <label for="rating">Rating</label>
+        <input type="text" name="rating" id="rating">
+        <input type="submit" value="Save" id="btnSave">
+    </form>
+
+    <div id="result">
+        <table>
+            <thead>
+                <tr>
+                    <th width="60%">Title</th>
+                    <th width="20%">Price</th>
+                    <th width="20%">Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>No data</td>
+                    <td>No data</td>
+                    <td>No data</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const btnSave = document.querySelector('#btnSave');
+        const bookTitle = document.querySelector('#title');
+        const bookPrice = document.querySelector('#price');
+        const bookRating = document.querySelector('#rating');
+        const tbody = document.querySelector('#result tbody');
+        const bookList = [];
+
+        btnSave.addEventListener('click', function(e) {
+            e.preventDefault();
+            bookList.push({
+                title: bookTitle.value, 
+                price: bookPrice.value, 
+                rating: bookRating.value
+            });
+            clearForm();
+            renderBookList();
+
+            console.log(bookList);
+        })
+
+        const clearForm = () => {
+            bookPrice.value = '';
+            bookPrice.value = '';
+            bookPrice.value = '';
+        }
+
+        const renderBookList = () => {
+            tbody.innerHTML = '';
+            for (const book of bookList) {
+                const dataRow = document.createElement('tr');
+
+                const dataTitle = document.createElement('td');
+                dataTitle.textContent = book.title;
+                
+                const dataPrice = document.createElement('td');
+                dataPrice.textContent = book.price;
+                
+                const dataRating = document.createElement('td');
+                dataRating.textContent = book.rating;
+
+                dataRow.append(dataTitle, dataPrice, dataRating);
+                tbody.append(dataRow);
+            }
+        }
+    </script>
+</body>
+</html>
