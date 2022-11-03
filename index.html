@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
         body {
             padding: 10px;
         }
+
         #result {
             margin-top: 50px;
             width: 60%;
@@ -19,16 +21,16 @@
             width: 100%;
         }
 
-        table > thead > tr {
+        table>thead>tr {
             border-bottom: 1px solid black;
         }
-        
-        table tr > * {
+
+        table tr>* {
             border-right: 1px solid black;
             padding: 5px 10px;
         }
-        
-        table tr > *:last-of-type {
+
+        table tr>*:last-of-type {
             border-right: none;
         }
 
@@ -43,6 +45,7 @@
         }
     </style>
 </head>
+
 <body>
     <form action="#" method="post">
         <label for="title">Title</label>
@@ -81,11 +84,11 @@
         const tbody = document.querySelector('#result tbody');
         const bookList = [];
 
-        btnSave.addEventListener('click', function(e) {
+        btnSave.addEventListener('click', function (e) {
             e.preventDefault();
             bookList.push({
-                title: bookTitle.value, 
-                price: bookPrice.value, 
+                title: bookTitle.value,
+                price: bookPrice.value,
                 rating: bookRating.value
             });
             clearForm();
@@ -107,12 +110,13 @@
 
                 const dataTitle = document.createElement('td');
                 dataTitle.textContent = book.title;
-                
+
                 const dataPrice = document.createElement('td');
                 dataPrice.textContent = book.price;
-                
+
                 const dataRating = document.createElement('td');
-                dataRating.textContent = book.rating;
+                let stars = ('⭐').repeat(parseInt(book.rating));
+                dataRating.textContent = stars;
 
                 dataRow.append(dataTitle, dataPrice, dataRating);
                 tbody.append(dataRow);
@@ -120,4 +124,5 @@
         }
     </script>
 </body>
+
 </html>
