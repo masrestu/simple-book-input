@@ -43,6 +43,10 @@
             margin-top: 5px;
             display: block;
         }
+
+        select {
+            width: 100px;
+        }
     </style>
 </head>
 
@@ -56,6 +60,13 @@
     <textarea placeholder="taTestHidden" name="taTestHidden" id="taTestHidden" cols="30" rows="10" hidden></textarea>
     <br>
     <textarea placeholder="taTestVisible" name="taTestVisible" id="taTestVisible" cols="30" rows="10"></textarea>
+
+
+    <select name="" id="" multiple>
+        <option value="a" selected>11111111111</option>
+        <option value="b" selected>22222222222</option>
+        <option value="c" selected>33333333333</option>
+    </select>
     <!-- <form action="#" method="post">
         <label for="title">Title</label>
         <input type="text" name="title" id="title">
@@ -104,13 +115,13 @@
             renderBookList();
 
             console.log(bookList);
-        })
+        });
 
         const clearForm = () => {
             bookTitle.value = '';
             bookPrice.value = '';
             bookRating.value = '';
-        }
+        };
 
         const renderBookList = () => {
             tbody.innerHTML = '';
